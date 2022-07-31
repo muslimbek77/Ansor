@@ -1,0 +1,83 @@
+
+{% load static %}
+<!DOCTYPE html>
+  
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Kurslar</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+        <!-- <link rel="stylesheet" href="{% static '/css/course.css' %}"> -->
+        <link rel="stylesheet" href="{% static '/css/style.css' %}">
+    </head>
+    <body>
+        <section class="hero is-primary is-bold is-fullheight" style="background-image: linear-gradient(141deg, #300bd3 0, #326ea0 71%, #617674eb 100%);">
+        <div class="hero-head">
+            <nav class="navbar">
+                <div class="container">
+                    <div class="navbar-brand">
+                        <a href="{% url 'home' %}" class="navbarItem">
+                            <img src="{% static 'images/1.png' %}" alt="Logo" style="width:13rem; height:auto;" >
+                        </a>
+    
+                        <span class="navbar-burger burger">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                    </div>
+    
+                    <div class="navbar-menu">
+                        <div class="navbar-end">
+                            <a href="{% url 'home' %}" class="navbar-item">Bosh sahifa</a>
+                            <a href="#courses" class="navbar-item">Bizning kurslar</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <section id="join" style='padding:1rem'>
+            {% if is_success %}
+                <div  class="notification is_success is-size-3 has-text-centered" style='background:green'>
+                    <button class="delete" id="Success" onclick={notificClick()}></button>
+                    Sizning arizangiz qabul qilindi !
+                </div>
+            {% endif %}
+        <div class="container">
+            <div class="has-text-centered" >
+                <h2 class="title is-1">Kursga yozilish</h1>
+                <h3 class="subtitle has-text-grey">Hoziroq ro'yhatdan o'ting!</h2>
+            </div>
+        </div>
+        <div class="columns is-variable is-8 is-vcentered">
+            <div class="column">
+                <img src="{% static 'images/join.png' %}" alt="Join illustration" style='width:550px'>
+            </div>
+            <div class="column" style='margin:3rem'>
+                <div class="box">
+                    <form method="post" class="form">
+                        {% csrf_token %}
+                        {{ form }}
+                        <button type="submit" class="button is-primary is-fullwidth">
+                              Yuborish
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        </section>
+    </section>
+    </div>
+
+    
+        <script>
+            let del = document.querySelector('.Success');
+            let notif = document.querySelector('.notification');
+    
+            function notificClick() {
+                notif.remove();
+            }
+        </script>
+    </body>
+</html>

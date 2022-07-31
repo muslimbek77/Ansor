@@ -1,0 +1,69 @@
+
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kurslar</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <!-- <link rel="stylesheet" href="{% static '/css/course.css' %}"> -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% comment %} <link rel='stylesheet' href='../static/css/style.css' > {% endcomment %}
+</head>
+
+<body>
+    <section class="hero is-primary is-bold is-fullheight" style="background-image: linear-gradient(141deg, #300bd3 0, #300bd3 71%, #300bd3 100%);">
+        <div class="hero-head">
+            <nav class="navbar">
+                <div class="container">
+                    <div class="navbar-brand">
+                        <a href="{% url 'home' %}" class="navbarItem">
+                            <img src="{% static 'images/1.png' %}" alt="Logo" style="width:13rem; height:auto;" >
+                        </a>
+    
+                        <span class="navbar-burger burger">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                    </div>
+    
+                    <div class="navbar-menu">
+                        <div class="navbar-end">
+                            <a href="{% url 'home' %}" class="navbar-item">Bosh sahifa</a>
+                            <a href="#courses" class="navbar-item">Bizning kurslar</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    <section  class="details" style='padding:1rem' >
+        <div class="container">
+            <div class="has-text-centered" id="MYID">
+                <h2 class="title"><span class="has-text-info" >{{ course.title }} </span> Kursi haqida </h2>
+                <p class="subtitle">Kurs davomiyligi <b>{{ course.duration }}</b> oy,
+                    Darslar haftasiga 3 marta o'tkaziladi,
+                Proektlarni amaliy tarzda mentorlar yordamida o'rganasiz</p>
+                <p class="subtitle">Kurs to'lovi Oylik to'lov- <b>{{ course.price }} 000 </b>  so'm. </p><br>
+            </div>
+            <div class="columns is-vcentered topic">
+                <div class="column is-5">
+                    <img src="{{course.image.url}}" alt="">
+                </div>
+                <div class="column is-offset-1">
+                    <h1 class="title is-3 has-text-info">
+                        Kurs tavsifi
+                    </h1><br>
+                    <h2 class="subtitle">{{ course.description }}</h2>
+
+                    <a href="{% url 'about_course' %}">
+                        <button class="button is-primary ">Kursga yozilish</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+
